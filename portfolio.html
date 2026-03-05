@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Micah Eckert</title>
+  <meta name="description" content="Photography portfolio — Micah G. Kraml Eckert. Arctic landscapes, fieldwork, and communities of Canada's North.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%232563eb'/><text x='50' y='72' font-size='60' font-family='Georgia,serif' fill='%23fff' text-anchor='middle'>M</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .portfolio-hero {
+      padding: 8rem 0 4rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .portfolio-hero .section-label { margin-bottom: 0.6rem; }
+    .portfolio-hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+    }
+    .portfolio-hero p {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+      letter-spacing: 0.01em;
+    }
+    .portfolio-gallery-section {
+      padding: 4rem 0 6rem;
+      background: var(--bg);
+    }
+    .portfolio-collection {
+      margin-bottom: 4rem;
+    }
+    .collection-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--blue);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .collection-title::before { content: '// '; }
+    .portfolio-collection .gallery {
+      margin-top: 0;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 10px;
+      border: none;
+      overflow: visible;
+      border-radius: 0;
+    }
+    .portfolio-collection .gallery-item {
+      aspect-ratio: 3 / 2;
+      height: auto;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .portfolio-collection .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 540px) {
+      .portfolio-collection .gallery { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Micah Eckert</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#photography">Photography</a></li>
+        <li><a href="portfolio.html" class="nav-active">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <div class="portfolio-hero">
+    <div class="container">
+      <span class="section-label">Portfolio</span>
+      <h1>Photography</h1>
+      <p>Arctic landscapes, fieldwork, and communities of Canada's North — 2025</p>
+    </div>
+  </div>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="portfolio-gallery-section">
+    <div class="container" id="portfolio-root"></div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lightbox-close" id="lb-close" aria-label="Close">&times;</button>
+      <button class="lightbox-nav prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lb-img">
+      </div>
+      <button class="lightbox-nav next" id="lb-next" aria-label="Next">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-bar">
+      <p>&copy; 2026 Micah G. Kraml Eckert &middot; micaheckert.ca</p>
+    </div>
+  </footer>
+
+  <script>
+    'use strict';
+
+    /* ============================================================
+       PHOTO COLLECTIONS
+       Add/remove collections and photos here.
+       Format: { name: 'Collection Name', photos: ['path/to/img.jpg', ...] }
+       ============================================================ */
+    var collections = [
+      {
+        name: 'Western Arctic',
+        photos: [
+          'Portfolio_2025/Western Arctic/DJI_20250801232409_0075_D_Original.JPG',
+          'Portfolio_2025/Western Arctic/DJI_20250801232446_0077_D_Original.JPG',
+          'Portfolio_2025/Western Arctic/DJI_20250801232637_0080_D_Original.JPG',
+          'Portfolio_2025/Western Arctic/DJI_20250803163308_0182_D_Original.JPG',
+          'Portfolio_2025/Western Arctic/DSC05242_Original.jpg',
+          'Portfolio_2025/Western Arctic/DSC05255_Original.jpg',
+          'Portfolio_2025/Western Arctic/DSC05409_Original.jpg',
+          'Portfolio_2025/Western Arctic/DSC05632_Original.jpg',
+          'Portfolio_2025/Western Arctic/DSCF7887.JPG',
+          'Portfolio_2025/Western Arctic/DSCF8063.JPG',
+          'Portfolio_2025/Western Arctic/DSCF8268.JPG',
+          'Portfolio_2025/Western Arctic/DSCF8325.JPG',
+        ]
+      },
+      {
+        name: 'Other',
+        photos: [
+          'Portfolio_2025/Other/DSC01343.JPG',
+          'Portfolio_2025/Other/DSC01349.JPG',
+          'Portfolio_2025/Other/DSC01437.JPG',
+          'Portfolio_2025/Other/DSC06218_Original.JPG',
+          'Portfolio_2025/Other/DSC06247_Original.JPG',
+          'Portfolio_2025/Other/DSC06420_Original.JPG',
+          'Portfolio_2025/Other/DSC_0391.JPG',
+          'Portfolio_2025/Other/DSC_0394.JPG',
+        ]
+      }
+    ];
+
+    /* ----- Flatten all photos for lightbox navigation ----- */
+    var allPhotos = [];
+    collections.forEach(function(col) {
+      col.photos.forEach(function(src) { allPhotos.push(src); });
+    });
+
+    /* ----- Build gallery ----- */
+    (function() {
+      var root = document.getElementById('portfolio-root');
+      if (!root) return;
+
+      if (allPhotos.length === 0) {
+        root.innerHTML = '<div style="border:1px dashed var(--border-md);border-radius:var(--radius);padding:5rem 2rem;text-align:center;font-family:var(--font-mono);font-size:0.82rem;color:var(--text-faint);line-height:1.85"><strong style="color:var(--text-muted);display:block;margin-bottom:0.5rem;font-size:0.9rem">// No photos yet</strong>Add images to <code>Portfolio_2025/</code> and update the <code>collections</code> array in <code>portfolio.html</code></div>';
+        return;
+      }
+
+      var globalIndex = 0;
+      collections.forEach(function(col) {
+        if (col.photos.length === 0) return;
+
+        var section = document.createElement('div');
+        section.className = 'portfolio-collection';
+
+        var title = document.createElement('h2');
+        title.className = 'collection-title';
+        title.textContent = col.name;
+        section.appendChild(title);
+
+        var grid = document.createElement('div');
+        grid.className = 'gallery';
+        grid.setAttribute('role', 'list');
+
+        col.photos.forEach(function(src) {
+          var idx = globalIndex++;
+          var item = document.createElement('div');
+          item.className = 'gallery-item fade-in';
+          item.setAttribute('role', 'listitem');
+          item.setAttribute('tabindex', '0');
+
+          var img = document.createElement('img');
+          img.src = src;
+          img.alt = '';
+          img.loading = 'lazy';
+
+          var overlay = document.createElement('div');
+          overlay.className = 'gallery-item-overlay';
+
+          item.appendChild(img);
+          item.appendChild(overlay);
+          grid.appendChild(item);
+
+          item.addEventListener('click', function() { openLightbox(idx); });
+          item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); }
+          });
+        });
+
+        section.appendChild(grid);
+        root.appendChild(section);
+      });
+    })();
+
+    /* ----- Lightbox ----- */
+    var currentIndex = 0;
+    var lightbox = document.getElementById('lightbox');
+    var lbImg    = document.getElementById('lb-img');
+    var lbClose  = document.getElementById('lb-close');
+    var lbPrev   = document.getElementById('lb-prev');
+    var lbNext   = document.getElementById('lb-next');
+
+    function openLightbox(i) {
+      currentIndex = i;
+      lbImg.src = allPhotos[currentIndex];
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', function() {
+      currentIndex = (currentIndex - 1 + allPhotos.length) % allPhotos.length;
+      lbImg.src = allPhotos[currentIndex];
+    });
+    lbNext.addEventListener('click', function() {
+      currentIndex = (currentIndex + 1) % allPhotos.length;
+      lbImg.src = allPhotos[currentIndex];
+    });
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft')  { currentIndex = (currentIndex - 1 + allPhotos.length) % allPhotos.length; lbImg.src = allPhotos[currentIndex]; }
+      if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % allPhotos.length; lbImg.src = allPhotos[currentIndex]; }
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    /* ----- Navbar ----- */
+    (function() {
+      var navbar = document.getElementById('navbar');
+      function onScroll() { navbar.classList.toggle('scrolled', window.scrollY > 60); }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    /* ----- Hamburger ----- */
+    (function() {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks  = document.getElementById('nav-links');
+      if (!hamburger || !navLinks) return;
+      hamburger.addEventListener('click', function() {
+        var open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      navLinks.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    })();
+
+    /* ----- Scroll reveal ----- */
+    (function() {
+      var els = document.querySelectorAll('.fade-in');
+      if (!('IntersectionObserver' in window)) { els.forEach(function(el) { el.classList.add('visible'); }); return; }
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { obs.observe(el); });
+      setTimeout(function() {
+        document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el) { el.classList.add('visible'); });
+      }, 800);
+    })();
+  </script>
+</body>
+</html>

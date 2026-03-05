@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micah Eckert — Environmental Data Science</title>
+  <meta name="description" content="Micah Eckert — MSc researcher in Arctic ecohydrology at UBC, studying coastal change on Qikiqtaruk using drone imagery and in-situ monitoring.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%232563eb'/><text x='50' y='72' font-size='60' font-family='Georgia,serif' fill='%23fff' text-anchor='middle'>M</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <svg class="nav-drone" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Arms -->
+          <line x1="13" y1="13" x2="6"  y2="6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="23" y1="13" x2="30" y2="6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="23" x2="6"  y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="23" y1="23" x2="30" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Motor rings -->
+          <circle cx="6"  cy="6"  r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="6"  r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="6"  cy="30" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="30" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <!-- Propeller crosses -->
+          <line x1="3.2" y1="6"   x2="8.8" y2="6"   stroke="currentColor" stroke-width="1"   stroke-linecap="round" opacity="0.65"/>
+          <line x1="6"   y1="3.2" x2="6"   y2="8.8" stroke="currentColor" stroke-width="1"   stroke-linecap="round" opacity="0.65"/>
+          <line x1="27.2" y1="6"   x2="32.8" y2="6"   stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="30"   y1="3.2" x2="30"   y2="8.8" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="3.2" y1="30"  x2="8.8"  y2="30"  stroke="currentColor" stroke-width="1"  stroke-linecap="round" opacity="0.65"/>
+          <line x1="6"   y1="27.2" x2="6"   y2="32.8" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="27.2" y1="30"  x2="32.8" y2="30"  stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="30"   y1="27.2" x2="30"  y2="32.8" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <!-- Body (circuit-chip) -->
+          <rect x="13" y="13" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <!-- Connector pins on body -->
+          <line x1="16" y1="13" x2="16" y2="11" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="20" y1="13" x2="20" y2="11" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="16" y1="23" x2="16" y2="25" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="20" y1="23" x2="20" y2="25" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <!-- Camera / reticle -->
+          <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
+          <line x1="18" y1="10" x2="18" y2="12" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="18" y1="24" x2="18" y2="26" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="10"  y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="24"  y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        Micah Eckert
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#photography">Photography</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="cv.html" target="_blank" rel="noopener">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-image">
+      <video autoplay muted loop playsinline>
+        <source src="Photos/IMG_5633_web.mp4" type="video/mp4">
+        <img src="Photos/DSC05240.JPG" alt="Arctic landscape">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-sup">Arctic Ecohydrology &amp; Remote Sensing</p>
+      <h1>Micah Eckert</h1>
+      <p class="hero-tagline">Environmental Data Science</p>
+      <div class="hero-cta">
+        <a href="#research" class="btn btn-primary">View Research</a>
+        <a href="#photography" class="btn btn-ghost">Photography</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section about">
+    <div class="container about-grid">
+      <div class="about-photo">
+        <img src="Photos/DSCF8690.JPG" alt="Micah Eckert in the Arctic tundra, Yukon" loading="lazy">
+      </div>
+      <div class="about-text">
+        <span class="section-label">About</span>
+        <h2>Arctic science and media</h2>
+        <p>I am an early career ecohydrologist and remote sensing scientist interested in the drivers of physical and ecological change in the Arctic.</p>
+        <p>Currently, I am a MSc candidate at UBC with <a href="https://teamshrub.com" target="_blank" rel="noopener">Team Shrub</a> (Dr. Isla Myers-Smith). My thesis captures the local drivers of coastal flooding and erosion on Qikiqtaruk (Herschel Island) using in-situ pressure sensors and 3D drone photogrammetry.</p>
+        <p>I am an avid photographer and user of drones, interested in capturing changing landscapes, science-in-action, natural areas and cultural history.</p>
+        <p>I am honoured to be a <strong>Weston Family Northern Scientist</strong>, a <strong>Royal Canadian Geographic Society Scholar</strong>, and an awardee of the <strong>Canadian Graduate Research Scholarship (MSc)</strong>.</p>
+        <button class="btn-video-trigger" id="open-video-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><polygon points="10,8 17,12 10,16"/></svg>
+          Watch introductory video
+        </button>
+
+        <div class="affiliation-links">
+          <a href="https://teamshrub.com" target="_blank" rel="noopener" class="link-pill link-pill-shrub">
+            <img src="shrub.png" alt="" class="pill-logo">Team Shrub
+          </a>
+          <a href="https://forestry.ubc.ca" target="_blank" rel="noopener" class="link-pill">UBC Forestry</a>
+          <a href="https://instagram.com/micah.eckert" target="_blank" rel="noopener" class="link-pill">Instagram</a>
+          <a href="https://github.com/eckertmicah" target="_blank" rel="noopener" class="link-pill">GitHub</a>
+          <a href="https://ca.linkedin.com/in/micah-eckert-63123725a" target="_blank" rel="noopener" class="link-pill">LinkedIn</a>
+          <a href="mailto:eckert01@student.ubc.ca" class="link-pill">eckert01@student.ubc.ca</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESEARCH — WELL Project ===== -->
+  <section id="research" class="section research">
+    <div class="container">
+
+      <div class="research-header-text">
+        <span class="section-label">Research</span>
+        <h2>WELL — Water Ecosystem Land Loss Project <a href="https://teamshrub.com" target="_blank" rel="noopener" class="shrub-inline-link"><img src="shrub.png" alt="Team Shrub" class="shrub-inline-logo"></a></h2>
+        <p class="section-intro">Capturing flood and erosion dynamics using in-situ monitoring on Qikiqtaruk (Herschel Island, Yukon).</p>
+      </div>
+
+      <!-- 4 Objectives -->
+      <div class="research-grid">
+        <div class="research-card fade-in">
+          <h3>Capture the drivers of coastal flooding and erosion</h3>
+          <p>Deploy and maintain in-situ flood sensors to record water level, salinity, and storm dynamics across Qikiqtaruk's coastline.</p>
+        </div>
+        <div class="research-card fade-in">
+          <h3>Inform the management of Qikiqtaruk's coastal values</h3>
+          <p>Translate field data into actionable findings for Yukon Parks and Inuvialuit partners managing the island's cultural and ecological heritage.</p>
+        </div>
+        <div class="research-card fade-in">
+          <h3>Improve flood monitoring in the western Arctic</h3>
+          <p>Build a replicable in-situ monitoring framework for remote Arctic coastlines where continuous satellite observation is limited.</p>
+        </div>
+        <div class="research-card fade-in">
+          <h3>Improve flood forecasting through ECCC collaboration</h3>
+          <p>Support the <a href="https://www.canada.ca/en/services/environment/weather/other-services/coastal-flooding-prediction-alert.html#toc0" target="_blank" rel="noopener">Coastal Flood Alerting and Prediction program</a> at Environment and Climate Change Canada with high-resolution field observations.</p>
+        </div>
+      </div>
+
+      <!-- Collaborators -->
+      <div class="research-collab">
+        <span class="research-collab-label">// In collaboration with</span>
+        <div class="research-collab-partners">
+          <span>Yukon Parks</span>
+          <span>Qikiqtaruk Park Rangers</span>
+          <span>Environment and Climate Change Canada</span>
+          <span>Aullaviat / Anguniarvik Guardians</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PUBLICATIONS / PREVIOUS RESEARCH ===== -->
+  <section id="publications" class="section publications">
+    <div class="container">
+      <span class="section-label">Previous Research</span>
+      <h2>Publications</h2>
+
+      <!-- Eckert et al. (in prep) — FIRST -->
+      <div class="paper-card fade-in">
+        <div class="paper-meta">
+          <span class="paper-label">// In preparation</span>
+          <h3>Eckert et al. (in prep)</h3>
+          <p class="paper-journal">Eckert, M., Murphy, E., Lantuit, H., Borderieux, J., Wagar, J., Patten, J., Gordon, R., Myers-Smith, I.</p>
+          <ul class="paper-findings">
+            <li>Six-well monitoring network at Simpson Point, Qikiqtaruk — water levels across 2024–2025 ice-free seasons</li>
+            <li>Paired with in situ weather, wind, and wave data; Bayesian multivariate models quantified flood drivers</li>
+            <li>19 flood days in 2024; 23 in 2025 — historically highest recorded water level on 11 July 2025</li>
+            <li>Storm surges were the primary flood driver; easterly winds and waves strongly predicted severity</li>
+            <li>Results inform ECCC's Coastal Flood Alerting and Prediction program and Yukon Parks' monitoring</li>
+          </ul>
+        </div>
+        <div class="paper-graph">
+          <img src="graph.jpg" alt="Key findings figure — Eckert et al. in prep" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Verkaik et al. (2025) — SECOND -->
+      <div class="paper-card fade-in">
+        <div class="paper-meta">
+          <span class="paper-label">// Peer-reviewed article</span>
+          <h3>Verkaik et al. (2025)</h3>
+          <p class="paper-journal"><em>Journal of Geophysical Research: Biogeosciences</em></p>
+          <ul class="paper-findings">
+            <li>Assessed how peatland drainage altered forest cover, aboveground biomass, and tree productivity</li>
+            <li>Black spruce and birch peatland in Parkland County, Alberta — drained 1987, burned 2021</li>
+            <li>Historical imagery and LiDAR revealed forest cover increased 180% following drainage</li>
+            <li>Aboveground tree biomass decreased from 26.1 kg/m²; burn severity spatially linked to drainage history</li>
+          </ul>
+          <button class="btn-paper-view" id="open-pdf-btn">// View paper &rarr;</button>
+        </div>
+        <div class="paper-iframe-embed">
+          <iframe src="verkaik2025.pdf#view=FitH&toolbar=0" title="Verkaik et al. (2025)">
+            <p>// PDF preview unavailable — <a href="verkaik2025.pdf" target="_blank">open in new tab</a>.</p>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- ArcticNet poster accordion -->
+      <details class="poster-details">
+        <summary>
+          <span class="poster-summary-inner">
+            <span class="poster-title">ArcticNet 2024 Annual Scientific Meeting — Poster</span>
+            <span class="poster-award">// 3rd Place Award</span>
+          </span>
+          <svg class="poster-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="poster-content">
+          <img src="arcticnet.webp" alt="ArcticNet 2024 Poster — Micah Eckert" loading="lazy">
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ===== PRESS / IN THE MEDIA ===== -->
+  <section id="press" class="section press">
+    <div class="container">
+      <span class="section-label">In the Media</span>
+      <h2>Press</h2>
+      <a class="press-card fade-in" href="https://www.theguardian.com/environment/2025/feb/10/canada-arctic-yukon-herschel-island-qikiqtaruk-inuvialuit-culture-conservation-dilemma-climate-floods-historic-whaling" target="_blank" rel="noopener">
+        <div class="press-card-top">
+          <div class="press-outlet">
+            <span class="press-outlet-name">The Guardian</span>
+            <span class="press-date">Feb 10, 2025</span>
+          </div>
+          <svg class="press-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <h3 class="press-headline">Canada's Arctic island faces a conservation dilemma: climate, floods, and a heritage at risk</h3>
+        <p class="press-desc">Reporting on coastal flooding, permafrost thaw, and the cultural heritage of Qikiqtaruk (Herschel Island, Yukon) — featuring fieldwork from the Team Shrub research program.</p>
+        <span class="press-read">Read article &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== PHOTOGRAPHY ===== -->
+  <section id="photography" class="section photography">
+    <div class="container">
+      <span class="section-label">Photography</span>
+      <h2>The Arctic Through My Lens</h2>
+      <div class="slideshow" id="slideshow">
+        <img class="slideshow-img active" src="Portfolio_2025/Western%20Arctic/DJI_20250801232409_0075_D_Original.JPG" alt="Aerial view of the western Arctic coastline, Qikiqtaruk" loading="lazy">
+        <img class="slideshow-img" src="Portfolio_2025/Western%20Arctic/DJI_20250803163308_0182_D_Original.JPG" alt="Drone photograph over the western Arctic tundra" loading="lazy">
+        <img class="slideshow-img" src="Portfolio_2025/Western%20Arctic/DSC05242_Original.jpg" alt="Western Arctic landscape, Yukon" loading="lazy">
+        <img class="slideshow-img" src="Portfolio_2025/Western%20Arctic/DSC05409_Original.jpg" alt="Arctic fieldwork, western Yukon" loading="lazy">
+        <img class="slideshow-img" src="Portfolio_2025/Western%20Arctic/DSCF8063.JPG" alt="Tundra and coastline, Qikiqtaruk" loading="lazy">
+        <img class="slideshow-img" src="Portfolio_2025/Western%20Arctic/DSCF8268.JPG" alt="Western Arctic scenery, Yukon" loading="lazy">
+        <div class="slideshow-dots" aria-hidden="true">
+          <button class="slideshow-dot active"></button>
+          <button class="slideshow-dot"></button>
+          <button class="slideshow-dot"></button>
+          <button class="slideshow-dot"></button>
+          <button class="slideshow-dot"></button>
+          <button class="slideshow-dot"></button>
+        </div>
+      </div>
+      <div class="gallery-cta">
+        <a href="portfolio.html" class="btn btn-primary">See full portfolio &rarr;</a>
+      </div>
+      <p class="photo-credit">
+        Images have been used by the <strong>National Geographic Society</strong> and <strong>The Guardian</strong>.
+        All photographs are subject to copyright &mdash; please <a href="mailto:eckert01@student.ubc.ca">reach out</a> for use or purchase.
+      </p>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lightbox-close" id="lb-close" aria-label="Close">&times;</button>
+      <button class="lightbox-nav prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lb-img">
+      </div>
+      <p id="lb-caption"></p>
+      <button class="lightbox-nav next" id="lb-next" aria-label="Next">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- ===== COASTLINE VIDEO + CONTACT ===== -->
+  <section id="contact" class="coastal-video-section">
+    <div class="coastal-video-bg">
+      <video autoplay muted loop playsinline>
+        <source src="dronevid_web.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="coastal-video-overlay"></div>
+    <div class="coastal-video-content">
+      <span class="coastal-video-label">// Contact</span>
+      <h2 class="coastal-video-heading">Get in Touch</h2>
+      <p class="coastal-video-sub">Open to collaboration or inquiries.</p>
+      <a href="mailto:eckert01@student.ubc.ca" class="contact-email contact-email--light">eckert01@student.ubc.ca</a>
+      <div class="contact-links contact-links--light">
+        <a href="https://teamshrub.com" target="_blank" rel="noopener">Team Shrub</a>
+        <a href="https://forestry.ubc.ca" target="_blank" rel="noopener">UBC Forestry</a>
+        <a href="https://instagram.com/micah.eckert" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://github.com/eckertmicah" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://ca.linkedin.com/in/micah-eckert-63123725a" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="Eckert_CV.pdf" download>Download CV</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <!-- Partner / Funder Logos -->
+    <div class="footer-logos">
+      <p class="footer-logos-label">// Supported by &amp; affiliated with</p>
+      <div class="footer-logos-row">
+        <img src="logos/Picture1.png" alt="NSERC / CRSNG">
+        <img src="logos/Picture2.png" alt="Yukon Government">
+        <img src="logos/Picture3.png" alt="Weston Family Foundation">
+        <img src="logos/Picture4.png" alt="Northern Scientific Training Program">
+        <img src="logos/Picture5.png" alt="The Royal Canadian Geographical Society">
+        <img src="logos/Picture6.png" alt="UBC Faculty of Forestry">
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <p>&copy; 2026 Micah Eckert &middot; micaheckert.ca</p>
+    </div>
+  </footer>
+
+  <!-- ===== VIDEO MODAL ===== -->
+  <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-label="Introductory video">
+    <div class="video-modal-inner">
+      <button class="video-modal-close" id="video-modal-close" aria-label="Close">&times;</button>
+      <p class="video-modal-title">// Introductory video — Weston Family Foundation</p>
+      <video id="video-modal-player" class="video-modal-player" controls>
+        <source src="Eckert_VideoComponent_web.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- ===== PDF MODAL ===== -->
+  <div id="pdf-modal" class="pdf-modal" role="dialog" aria-modal="true" aria-label="Paper viewer">
+    <div class="pdf-modal-inner">
+      <button class="pdf-modal-close" id="pdf-modal-close" aria-label="Close">&times;</button>
+      <p class="pdf-modal-title">Verkaik et al. (2025) — Journal of Geophysical Research: Biogeosciences</p>
+      <object id="pdf-modal-iframe" class="pdf-modal-iframe" type="application/pdf" data="">
+        <div class="pdf-fallback">
+          <p>// PDF preview not supported in this browser</p>
+          <a href="verkaik2025.pdf" target="_blank" class="btn-paper-view">Open in new tab &rarr;</a>
+        </div>
+      </object>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

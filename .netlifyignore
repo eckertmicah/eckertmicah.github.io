@@ -1,0 +1,23 @@
+# Netlify deploy exclusions
+# Unused DJI raw video files (not referenced by the website)
+Photos/DJI_20250801122147_0058_D.MP4
+Photos/DJI_20250801211605_0063_D.MP4
+Photos/DJI_20250801211643_0064_D.MP4
+Photos/DJI_20250801211727_0065_D.MP4
+Photos/DJI_20250801212948_0067_D.MP4
+Photos/DJI_20250807204025_0292_D.MP4
+
+# Utility / development scripts
+serve.ps1
+serve-lan.ps1
+start-phone-server.bat
+copy_pdf.ps1
+extract_abstract.ps1
+list_all.ps1
+list_portfolio.ps1
+list_portfolio2.ps1
+.claude/
+
+# Source / working documents
+Bio.txt
+Eckert_CV.docx

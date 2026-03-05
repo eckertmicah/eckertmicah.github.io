@@ -1,0 +1,25 @@
+# Git exclusions
+# Unused DJI raw video files (~1.1 GB, not referenced by the website)
+Photos/DJI_20250801122147_0058_D.MP4
+Photos/DJI_20250801211605_0063_D.MP4
+Photos/DJI_20250801211643_0064_D.MP4
+Photos/DJI_20250801211727_0065_D.MP4
+Photos/DJI_20250801212948_0067_D.MP4
+Photos/DJI_20250807204025_0292_D.MP4
+
+# NOTE: dronevid.MP4 (217 MB) and Eckert_VideoComponent.mp4 (188 MB) exceed GitHub's
+# 100 MB per-file limit. You must compress them to <100 MB before pushing to GitHub,
+# or host them on an external service (e.g. Cloudinary, Vimeo, or a CDN) and update
+# the src= references in index.html.
+
+# Development scripts
+.claude/
+
+# Source / working documents
+Bio.txt
+Eckert_CV.docx
+
+# Local Netlify folder
+.netlify
+.claude/
+compress.bat
