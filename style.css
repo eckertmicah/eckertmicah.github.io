@@ -1333,6 +1333,10 @@ p:last-child { margin-bottom: 0; }
   max-width: 180px;
   object-fit: contain;
 }
+.footer-logos-row img:nth-child(2),
+.footer-logos-row img:nth-child(4) {
+  filter: brightness(0.5);
+}
 
 /* Video trigger button */
 .btn-video-trigger {

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WELL Project — Micah Eckert</title>
+  <meta name="description" content="WELL — Water Ecosystem Land Loss Project. In situ monitoring of coastal flooding on Qikiqtaruk (Herschel Island), Yukon.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%232563eb'/><text x='50' y='72' font-size='60' font-family='Georgia,serif' fill='%23fff' text-anchor='middle'>M</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ── Hero ── */
+    .well-hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .well-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .well-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,18,32,0.82) 0%, rgba(10,18,32,0.35) 55%, rgba(10,18,32,0.15) 100%);
+      z-index: 1;
+    }
+    .well-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 5rem 2rem 4rem;
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .well-hero-sup {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.75rem;
+    }
+    .well-hero h1 {
+      color: #fff;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      margin-bottom: 0.6rem;
+    }
+    .well-hero-sub {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
+    }
+    .well-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .well-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.75);
+      border-radius: 999px;
+    }
+
+    /* ── Layout ── */
+    .well-body {
+      background: var(--bg);
+    }
+    .well-section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .well-section:last-of-type {
+      border-bottom: none;
+    }
+    .well-section.alt {
+      background: var(--bg-alt);
+    }
+    .well-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .well-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+    .well-label::before { content: '// '; }
+
+    /* ── Context cards (problem statement) ── */
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .context-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .context-card .stat {
+      font-family: var(--font-mono);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+    .context-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ── Site description ── */
+    .site-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+    @media (max-width: 640px) {
+      .site-grid { grid-template-columns: 1fr; }
+    }
+    .site-grid img {
+      width: 100%;
+      border-radius: var(--radius);
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .site-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .site-text p:last-child { margin-bottom: 0; }
+
+    /* ── Flood timeline ── */
+    .timeline {
+      margin-top: 2.5rem;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-left: 2.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--blue);
+      background: var(--bg);
+      z-index: 1;
+    }
+    .timeline-item.highlight::before {
+      background: var(--blue);
+    }
+    .timeline-year {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      min-width: 60px;
+      padding-top: 0.1rem;
+    }
+    .timeline-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+    .timeline-desc strong {
+      color: var(--text);
+    }
+
+    /* ── Methods ── */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .method-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+    .method-icon {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+    .method-card h4 {
+      font-size: 0.78rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .method-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ── Findings ── */
+    .findings-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .finding-item {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .finding-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-bg);
+      border-radius: 4px;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .finding-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      padding-top: 0.35rem;
+    }
+    .finding-text strong { color: var(--text); }
+
+    /* ── Graph figure ── */
+    .figure-wrap {
+      margin-top: 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .figure-wrap img {
+      width: 100%;
+      display: block;
+    }
+    .figure-caption {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-alt);
+    }
+
+    /* ── Impact ── */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 560px) {
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+    .impact-card {
+      border-left: 3px solid var(--blue);
+      padding: 1.2rem 1.4rem;
+      background: var(--bg-alt);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .impact-card h4 {
+      color: var(--text);
+      font-size: 0.78rem;
+      margin-bottom: 0.4rem;
+    }
+    .impact-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ── Presentations ── */
+    .pres-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .pres-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .pres-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--blue-bg);
+      color: var(--blue);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+    .pres-info h4 {
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .pres-info p {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ── Collaborators ── */
+    .collab-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .collab-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border-md);
+      border-radius: 999px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .well-back {
+      padding: 1.4rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .well-back a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .well-back a:hover { color: var(--blue); }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg class="nav-drone" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="13" y1="13" x2="6"  y2="6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="23" y1="13" x2="30" y2="6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="23" x2="6"  y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="23" y1="23" x2="30" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="6"  cy="6"  r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="6"  r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="6"  cy="30" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="30" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="3.2" y1="6"   x2="8.8" y2="6"   stroke="currentColor" stroke-width="1"   stroke-linecap="round" opacity="0.65"/>
+          <line x1="6"   y1="3.2" x2="6"   y2="8.8" stroke="currentColor" stroke-width="1"   stroke-linecap="round" opacity="0.65"/>
+          <line x1="27.2" y1="6"   x2="32.8" y2="6"   stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="30"   y1="3.2" x2="30"   y2="8.8" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="3.2" y1="30"  x2="8.8"  y2="30"  stroke="currentColor" stroke-width="1"  stroke-linecap="round" opacity="0.65"/>
+          <line x1="6"   y1="27.2" x2="6"   y2="32.8" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="27.2" y1="30"  x2="32.8" y2="30"  stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <line x1="30"   y1="27.2" x2="30"  y2="32.8" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.65"/>
+          <rect x="13" y="13" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="16" y1="13" x2="16" y2="11" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="20" y1="13" x2="20" y2="11" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="16" y1="23" x2="16" y2="25" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="20" y1="23" x2="20" y2="25" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
+        </svg>
+        Micah Eckert
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="cv.html" target="_blank" rel="noopener">CV</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="well-hero">
+    <video class="well-hero-video" autoplay muted loop playsinline>
+      <source src="dronevid_web.mp4" type="video/mp4">
+    </video>
+    <div class="well-hero-overlay"></div>
+    <div class="well-hero-content">
+      <p class="well-hero-sup">MSc Research — Team Shrub / UBC Forestry</p>
+      <h1>WELL Project</h1>
+      <p class="well-hero-sub">Water Ecosystem Land Loss — In situ monitoring of coastal flooding and erosion on Qikiqtaruk (Herschel Island), Yukon.</p>
+      <div class="well-hero-tags">
+        <span class="well-tag">Arctic Ecohydrology</span>
+        <span class="well-tag">Coastal Flooding</span>
+        <span class="well-tag">In situ Monitoring</span>
+        <span class="well-tag">Qikiqtaruk</span>
+        <span class="well-tag">Eckert et al. in prep.</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="well-body">
+
+    <!-- ===== CONTEXT ===== -->
+    <section class="well-section">
+      <div class="well-container">
+        <p class="well-label">The Problem</p>
+        <h2>A rapidly changing Arctic coastline</h2>
+        <p style="color:var(--text-muted); margin-top:0.75rem; max-width:680px;">
+          The Western Arctic is experiencing a convergence of climate-driven changes that are intensifying coastal flooding. Declining sea ice, longer ice-free seasons, stronger storms, and higher waves are reshaping vulnerable permafrost coastlines — and the communities and heritage sites that depend on them.
+        </p>
+        <div class="context-grid">
+          <div class="context-card">
+            <div class="stat">5 d/yr</div>
+            <p>Rate of ice-free season expansion in the Beaufort Sea, 2000–2007 — five times faster than the preceding decades.</p>
+          </div>
+          <div class="context-card">
+            <div class="stat">45%</div>
+            <p>Of Arctic coastal communities projected to be inundated by sea level rise by 2100 (Tanguy et al. 2024).</p>
+          </div>
+          <div class="context-card">
+            <div class="stat">10</div>
+            <p>Canadian sites currently at risk of severe coastal flooding, with re-freeze events arriving later and coinciding with intensified autumn storms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE SITE ===== -->
+    <section class="well-section alt">
+      <div class="well-container">
+        <p class="well-label">Study Site</p>
+        <h2>Qikiqtaruk — Herschel Island</h2>
+        <div class="site-grid">
+          <img src="Photos/DSC05940.JPG" alt="Coastal flooding at Simpson Point, Qikiqtaruk" loading="lazy">
+          <div class="site-text">
+            <p>
+              Qikiqtaruk (Herschel Island), located off the Yukon coast in the Beaufort Sea, is one of the most culturally and ecologically significant sites in the Canadian Arctic. It holds Inuvialuit heritage spanning millennia, alongside rare archaeological remains from early 20th-century whaling.
+            </p>
+            <p>
+              <strong>Simpson Point</strong> — a low-lying gravel spit at the island's southern tip — is the focus of this study. It is the site of historic structures, active Yukon Parks infrastructure, and the primary monitoring location for the WELL project. The point faces increasing flood frequency as storm surges overtop its low coastal berm.
+            </p>
+            <p>
+              The gravel and permafrost coastline is highly sensitive to flooding, erosion, and thaw — processes that are accelerating as sea ice retreat extends the storm season deeper into autumn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FLOODING HISTORY ===== -->
+    <section class="well-section">
+      <div class="well-container">
+        <p class="well-label">Historical Context</p>
+        <h2>Flooding is increasing rapidly</h2>
+        <p style="color:var(--text-muted); margin-top:0.75rem; max-width:680px;">
+          Historical records and oral knowledge from Qikiqtaruk reveal a dramatic increase in flood frequency and severity over the past century.
+        </p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-year">1900s</span>
+            <p class="timeline-desc"><strong>Rare, isolated events.</strong> Single flood occurrences documented across decades — flooding was an exceptional event at Simpson Point.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">1995–2016</span>
+            <p class="timeline-desc"><strong>Flooding every 2–3 years.</strong> A shift to regular flooding as sea ice conditions begin to change and storm frequency increases.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2024</span>
+            <p class="timeline-desc"><strong>19 flood days</strong> recorded across the ice-free season — the first full year of the WELL monitoring network. Flooding had transitioned from a periodic hazard to a near-seasonal occurrence.</p>
+          </div>
+          <div class="timeline-item highlight">
+            <span class="timeline-year">2025</span>
+            <p class="timeline-desc"><strong>23 flood days</strong> recorded, including the <strong>historically highest water level ever measured at Qikiqtaruk on 11 July 2025</strong>. A landmark year confirming the accelerating trend.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHODS ===== -->
+    <section class="well-section alt">
+      <div class="well-container">
+        <p class="well-label">Methods</p>
+        <h2>In situ monitoring network</h2>
+        <p style="color:var(--text-muted); margin-top:0.75rem; max-width:680px;">
+          The WELL project deploys a multi-sensor monitoring network at Simpson Point, capturing water level dynamics alongside the meteorological and oceanographic forces that drive flooding.
+        </p>
+        <div class="methods-grid">
+          <div class="method-card">
+            <div class="method-icon">// Wells</div>
+            <h4>6-Well Water Level Network</h4>
+            <p>Pressure sensors in six coastal wells record continuous water level and salinity data across the full ice-free season (2024–2025).</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">// Atmosphere</div>
+            <h4>Wind &amp; Weather Station</h4>
+            <p>In situ weather station captures wind speed, direction, and atmospheric pressure to characterize storm events.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">// Ocean</div>
+            <h4>Waves &amp; Tidal Signal</h4>
+            <p>Sensors resolve tidal and storm surge components of water level, alongside wave height and period from the Beaufort Sea.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">// Statistics</div>
+            <h4>Bayesian Multivariate Models</h4>
+            <p>Two models — one wind-driven, one wave-driven — quantify flood drivers and predict 12-hour water level maximums using surge, wind, and wave data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINDINGS ===== -->
+    <section class="well-section">
+      <div class="well-container">
+        <p class="well-label">Key Findings</p>
+        <h2>What drives flooding at Qikiqtaruk?</h2>
+        <div class="findings-list">
+          <div class="finding-item">
+            <div class="finding-num">01</div>
+            <p class="finding-text"><strong>Storm surges are the primary driver of flood level.</strong> Surge magnitude explains the largest share of variance in water level — when surge is elevated, flooding occurs regardless of other conditions.</p>
+          </div>
+          <div class="finding-item">
+            <div class="finding-num">02</div>
+            <p class="finding-text"><strong>Wind and waves amplify flooding under surge conditions.</strong> Easterly winds and wave action strongly predict flood severity, but their impact is greatest during already-elevated storm surges. Local wind and wave data substantially improves flood prediction beyond surge alone.</p>
+          </div>
+          <div class="finding-item">
+            <div class="finding-num">03</div>
+            <p class="finding-text"><strong>Bayesian models successfully predict flood maxima.</strong> The model performs well at predicting peak water levels, with current limitations around drainage lags and freshwater–marine lens interactions at lower water levels — targets for future refinement.</p>
+          </div>
+          <div class="finding-item">
+            <div class="finding-num">04</div>
+            <p class="finding-text"><strong>Flooding risk is highest during surges with sustained easterly winds.</strong> This directional finding has direct implications for Yukon Parks' operational monitoring and ECCC's coastal flood alert thresholds.</p>
+          </div>
+        </div>
+        <div class="figure-wrap">
+          <img src="graph.jpg" alt="Key findings figure — Eckert et al. in prep. Flood drivers at Qikiqtaruk" loading="lazy">
+          <p class="figure-caption">// Figure — Eckert et al. (in prep.) — Flood drivers and water level model output, Simpson Point, Qikiqtaruk 2024–2025.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IMPACT ===== -->
+    <section class="well-section alt">
+      <div class="well-container">
+        <p class="well-label">Impact</p>
+        <h2>Informing monitoring and forecasting</h2>
+        <p style="color:var(--text-muted); margin-top:0.75rem; max-width:680px;">
+          The WELL project is designed from the ground up to produce results that are directly actionable for the partners managing Qikiqtaruk and the broader Arctic coast.
+        </p>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <h4>ECCC — Coastal Flood Alerting and Prediction</h4>
+            <p>Results directly inform Environment and Climate Change Canada's Coastal Flooding Prediction and Alerting Program, improving the regional models used to issue flood alerts across the Canadian Arctic.</p>
+          </div>
+          <div class="impact-card">
+            <h4>Yukon Parks Ecological Monitoring</h4>
+            <p>The WELL monitoring framework is integrated into Yukon Parks' Ecological Monitoring Program, providing long-term flood data for management of Qikiqtaruk's cultural and natural heritage.</p>
+          </div>
+          <div class="impact-card">
+            <h4>Inuvialuit Community Partners</h4>
+            <p>In collaboration with Qikiqtaruk Park Rangers and the Aullaviat / Anguniarvik Guardians, findings support local stewardship of the island's irreplaceable archaeological and ecological resources.</p>
+          </div>
+          <div class="impact-card">
+            <h4>Scalable Arctic Monitoring</h4>
+            <p>The in situ monitoring approach is designed to be replicable across remote Arctic coastlines where continuous satellite observation is limited — supporting conservation efforts from Shingle Point to the broader Canadian Beaufort.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRESENTATIONS ===== -->
+    <section class="well-section">
+      <div class="well-container">
+        <p class="well-label">Presentations</p>
+        <h2>Conference &amp; Workshop Talks</h2>
+        <div class="pres-list">
+          <div class="pres-item">
+            <span class="pres-badge">Talk</span>
+            <div class="pres-info">
+              <h4>ArcticNet Annual Scientific Meeting 2025 — Calgary</h4>
+              <p>In situ water level monitoring captures local drivers of coastal flooding. Eckert, M., Myers-Smith, I., Borderieux, J., Murphy, E., Lantuit, H., Gordon, R., Wagar, J., Patten, J.</p>
+            </div>
+          </div>
+          <div class="pres-item">
+            <span class="pres-badge">Abstract</span>
+            <div class="pres-info">
+              <h4>Canadian Geoscience Union General Meeting 2026</h4>
+              <p>In situ monitoring captures local drivers of coastal flooding in the Western Arctic. Eckert, M., Murphy, E., Lantuit, H., Borderieux, J., Wagar, J., Patten, J., Gordon, R., Myers-Smith, I. — Session H1: Coastal Geomorphology and Hydrodynamics.</p>
+            </div>
+          </div>
+          <div class="pres-item">
+            <span class="pres-badge">Poster · 3rd Place</span>
+            <div class="pres-info">
+              <h4>ArcticNet Annual Scientific Meeting 2024</h4>
+              <p>Awarded 3rd Place at the ASM poster session. Early results from the 2024 monitoring season at Simpson Point, Qikiqtaruk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COLLABORATORS ===== -->
+    <section class="well-section alt">
+      <div class="well-container">
+        <p class="well-label">Collaborators</p>
+        <h2>Research Team &amp; Partners</h2>
+        <div class="collab-tags">
+          <span class="collab-tag">Isla Myers-Smith — UBC</span>
+          <span class="collab-tag">Enda Murphy — UBC</span>
+          <span class="collab-tag">Jeremy Borderieux — UBC</span>
+          <span class="collab-tag">Hugues Lantuit — Alfred Wegener Institute</span>
+          <span class="collab-tag">Jesse Wagar — ECCC</span>
+          <span class="collab-tag">Justin Patten — ECCC</span>
+          <span class="collab-tag">Richard Gordon — Yukon Parks</span>
+          <span class="collab-tag">Qikiqtaruk Park Rangers</span>
+          <span class="collab-tag">Aullaviat / Anguniarvik Guardians</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-logos">
+      <p class="footer-logos-label">// Supported by &amp; affiliated with</p>
+      <div class="footer-logos-row">
+        <img src="Logos/Picture1.png" alt="NSERC / CRSNG">
+        <img src="Logos/Picture2.png" alt="Yukon Government">
+        <img src="Logos/Picture3.png" alt="Weston Family Foundation">
+        <img src="Logos/Picture4.png" alt="Northern Scientific Training Program">
+        <img src="Logos/Picture5.png" alt="The Royal Canadian Geographical Society">
+        <img src="Logos/Picture6.png" alt="UBC Faculty of Forestry">
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>&copy; 2026 Micah Eckert &middot; micaheckert.com</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
