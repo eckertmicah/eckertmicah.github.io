@@ -210,13 +210,62 @@
     .timeline-desc strong {
       color: var(--text);
     }
+    .timeline-video-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .timeline-video-link:hover { color: var(--blue-lt); }
+    .timeline-onset {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-left: 2.5rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .timeline-onset::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      background: var(--green);
+      z-index: 1;
+    }
+    .timeline-onset-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      border-radius: 4px;
+      padding: 0.2rem 0.65rem;
+    }
 
     /* ── Methods ── */
     .methods-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
       margin-top: 2rem;
+    }
+    .method-card.full-width {
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 600px) {
+      .methods-grid { grid-template-columns: 1fr; }
     }
     .method-card {
       border: 1px solid var(--border);
@@ -469,13 +518,19 @@
       <div class="well-container">
         <p class="well-label">The Problem</p>
         <h2>A rapidly changing Arctic coastline</h2>
-        <p style="color:var(--text-muted); margin-top:0.75rem; max-width:680px;">
-          The Western Arctic is experiencing a convergence of climate-driven changes that are intensifying coastal flooding. Declining sea ice, longer ice-free seasons, stronger storms, and higher waves are reshaping vulnerable permafrost coastlines — and the communities and heritage sites that depend on them.
+        <p style="color:var(--text-muted); margin-top:0.75rem; max-width:720px;">
+          The Western Arctic is experiencing a dangerous convergence of climate-driven changes. The Beaufort Sea's ice-free season is extending rapidly — expanding at up to 5 days per year in the 2000s — and autumn sea ice extent has declined dramatically since 1980. This matters because autumn is when storms are most active. As re-freeze arrives later, storms now strike an open, unprotected ocean rather than ice-covered water, generating larger waves and stronger surges along vulnerable permafrost coastlines.
         </p>
-        <div class="context-grid">
+
+        <div class="figure-wrap" style="margin-top:2rem;">
+          <img src="seaice_context.png" alt="Left: ice-free season length in the Beaufort Sea 1950–2100 under three SSP scenarios. Right: autumn sea ice concentration maps comparing 1980 and 2023, showing dramatic loss of fall sea ice in the Beaufort." loading="lazy">
+          <p class="figure-caption">// Ice-free season length in the Beaufort Sea (left) and autumn sea ice concentration 1980 vs. 2023 (right). The Beaufort has lost the majority of its fall sea ice cover — the season when storms are most intense. Source: NSIDC Climate Data Record; Barnhart et al. (2021) <em>Communications Earth &amp; Environment</em>, 2, 109. <a href="https://doi.org/10.1038/s43247-021-00183-x" target="_blank" rel="noopener">doi:10.1038/s43247-021-00183-x</a></p>
+        </div>
+
+        <div class="context-grid" style="margin-top:2rem;">
           <div class="context-card">
             <div class="stat">5 d/yr</div>
-            <p>Rate of ice-free season expansion in the Beaufort Sea, 2000–2007 — five times faster than the preceding decades.</p>
+            <p>Rate of ice-free season expansion in the Beaufort Sea, 2000–2007 — five times faster than the 1979–2007 average.</p>
           </div>
           <div class="context-card">
             <div class="stat">45%</div>
@@ -483,7 +538,7 @@
           </div>
           <div class="context-card">
             <div class="stat">10</div>
-            <p>Canadian sites currently at risk of severe coastal flooding, with re-freeze events arriving later and coinciding with intensified autumn storms.</p>
+            <p>Canadian sites currently at risk of severe coastal flooding, with late re-freeze now coinciding with peak autumn storm season.</p>
           </div>
         </div>
       </div>
@@ -528,13 +583,22 @@
             <span class="timeline-year">1995–2016</span>
             <p class="timeline-desc"><strong>Flooding every 2–3 years.</strong> A shift to regular flooding as sea ice conditions begin to change and storm frequency increases.</p>
           </div>
+          <div class="timeline-onset">
+            <span class="timeline-onset-label">// WELL project begins</span>
+          </div>
           <div class="timeline-item">
             <span class="timeline-year">2024</span>
             <p class="timeline-desc"><strong>19 flood days</strong> recorded across the ice-free season — the first full year of the WELL monitoring network. Flooding had transitioned from a periodic hazard to a near-seasonal occurrence.</p>
           </div>
           <div class="timeline-item highlight">
             <span class="timeline-year">2025</span>
-            <p class="timeline-desc"><strong>23 flood days</strong> recorded, including the <strong>historically highest water level ever measured at Qikiqtaruk on 11 July 2025</strong>. A landmark year confirming the accelerating trend.</p>
+            <div>
+              <p class="timeline-desc"><strong>23 flood days</strong> recorded, including the <strong>historically highest water level ever measured at Qikiqtaruk on 11 July 2025</strong>. A landmark year confirming the accelerating trend.</p>
+              <a href="timelapse.mp4" target="_blank" rel="noopener" class="timeline-video-link">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                Watch flood timelapse
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -564,10 +628,10 @@
             <h4>Waves &amp; Tidal Signal</h4>
             <p>Sensors resolve tidal and storm surge components of water level, alongside wave height and period from the Beaufort Sea.</p>
           </div>
-          <div class="method-card">
+          <div class="method-card full-width">
             <div class="method-icon">// Statistics</div>
             <h4>Bayesian Multivariate Models</h4>
-            <p>Two models — one wind-driven, one wave-driven — quantify flood drivers and predict 12-hour water level maximums using surge, wind, and wave data.</p>
+            <p>Bayesian models are used to determine which hydrological and climatic events are causing flooding events locally.</p>
           </div>
         </div>
       </div>
@@ -589,11 +653,11 @@
           </div>
           <div class="finding-item">
             <div class="finding-num">03</div>
-            <p class="finding-text"><strong>Bayesian models successfully predict flood maxima.</strong> The model performs well at predicting peak water levels, with current limitations around drainage lags and freshwater–marine lens interactions at lower water levels — targets for future refinement.</p>
+            <p class="finding-text"><strong>Flooding risk is highest during surges with sustained easterly winds.</strong> This directional finding has direct implications for Yukon Parks' operational monitoring and ECCC's coastal flood alert thresholds.</p>
           </div>
           <div class="finding-item">
             <div class="finding-num">04</div>
-            <p class="finding-text"><strong>Flooding risk is highest during surges with sustained easterly winds.</strong> This directional finding has direct implications for Yukon Parks' operational monitoring and ECCC's coastal flood alert thresholds.</p>
+            <p class="finding-text"><strong>Bayesian models successfully predict flood maxima.</strong> The model performs well at predicting peak water levels, with current limitations around drainage lags and freshwater–marine lens interactions at lower water levels — targets for future refinement.</p>
           </div>
         </div>
         <div class="figure-wrap">
@@ -627,37 +691,6 @@
           <div class="impact-card">
             <h4>Scalable Arctic Monitoring</h4>
             <p>The in situ monitoring approach is designed to be replicable across remote Arctic coastlines where continuous satellite observation is limited — supporting conservation efforts from Shingle Point to the broader Canadian Beaufort.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PRESENTATIONS ===== -->
-    <section class="well-section">
-      <div class="well-container">
-        <p class="well-label">Presentations</p>
-        <h2>Conference &amp; Workshop Talks</h2>
-        <div class="pres-list">
-          <div class="pres-item">
-            <span class="pres-badge">Talk</span>
-            <div class="pres-info">
-              <h4>ArcticNet Annual Scientific Meeting 2025 — Calgary</h4>
-              <p>In situ water level monitoring captures local drivers of coastal flooding. Eckert, M., Myers-Smith, I., Borderieux, J., Murphy, E., Lantuit, H., Gordon, R., Wagar, J., Patten, J.</p>
-            </div>
-          </div>
-          <div class="pres-item">
-            <span class="pres-badge">Abstract</span>
-            <div class="pres-info">
-              <h4>Canadian Geoscience Union General Meeting 2026</h4>
-              <p>In situ monitoring captures local drivers of coastal flooding in the Western Arctic. Eckert, M., Murphy, E., Lantuit, H., Borderieux, J., Wagar, J., Patten, J., Gordon, R., Myers-Smith, I. — Session H1: Coastal Geomorphology and Hydrodynamics.</p>
-            </div>
-          </div>
-          <div class="pres-item">
-            <span class="pres-badge">Poster · 3rd Place</span>
-            <div class="pres-info">
-              <h4>ArcticNet Annual Scientific Meeting 2024</h4>
-              <p>Awarded 3rd Place at the ASM poster session. Early results from the 2024 monitoring season at Simpson Point, Qikiqtaruk.</p>
-            </div>
           </div>
         </div>
       </div>
